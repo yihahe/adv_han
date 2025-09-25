@@ -1,0 +1,42 @@
+/* Basic global styles */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+body {
+  background: #f7f7f8;
+  color: #111;
+}
+
+h1 {
+  color: #1f2937;
+  text-align: center;
+}
+
+h2 {
+  color: #1f2937;
+  text-align: center;
+}
+
+.app-container {
+  padding: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.name-row {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center horizontally */
+  gap: 8px;
+  margin-top: 8px; /* keep it near the top */
+}
+
+.name-input {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  min-width: 200px;
+}
