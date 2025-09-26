@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Greeting from './components/Greeting';
 import Star from './components/Star';
+import Checklist from './components/Checklist';
 
 const App = () => {
     const [name, setName] = useState('');
@@ -24,6 +25,16 @@ const App = () => {
 
             <div style={{ marginTop: 16 }}>
                 <Greeting name={name || undefined} />
+            </div>
+
+            <div style={{ marginTop: 24 }}>
+                <h2 style={{ textAlign: 'center' }}>30 Under 30</h2>
+                <Checklist
+                    items={[
+                        { id: 'a', text: 'Skydive' },
+                    ]}
+                    onChange={(updated) => console.log('Checklist updated', updated)}
+                />
             </div>
         </div>
     );
