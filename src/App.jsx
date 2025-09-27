@@ -1,14 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Greeting from './components/Greeting';
 import Star from './components/Star';
 import Checklist from './components/Checklist';
 
 const App = () => {
-    const [name, setName] = useState('');
+    const [name, setName] = useState(() => {
+        try {
+            const raw = window.localStorage.getItem('userName');
+            return raw ? raw : '';
+        } catch (e) {
+            return '';
+        }
+    });
+
+    useEffect(() => {
+        try {
+            if (name) window.localStorage.setItem('userName', name);
+            else window.localStorage.removeItem('userName');
+        } catch (e) {
+            // ignore storage errors
+        }
+    }, [name]);
+
+    const displayName = name.trim();
+    const niceName = displayName ? displayName[0].toUpperCase() + displayName.slice(1) : '';
 
     return (
         <div className="app-container">
-            <h1>'Ello</h1>
+            <h1>{niceName ? `'Ello ${niceName},` : "'Ello"}</h1>
 
             <div className="name-row">
                 <label htmlFor="nameInput">Who are you?</label>
@@ -19,7 +38,7 @@ const App = () => {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Your name"
+                    placeholder="Friend"
                 />
             </div>
 
